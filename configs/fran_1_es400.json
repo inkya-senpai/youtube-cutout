@@ -1,0 +1,25 @@
+{
+ "src": "/tmp/claude-0/-home-user-youtube-cutout/78609004-fc97-5442-adf7-f4fb14bbd8b8/scratchpad/src4/src.mp4",
+ "out": "output/Fラン_1_ES添削400回でFランからSIer内定.mp4",
+ "crop": null,
+ "segments": [
+  [
+   117.43,
+   123.55
+  ],
+  [
+   103.05,
+   117.37
+  ],
+  [
+   123.61,
+   139.66
+  ],
+  [
+   141.16,
+   149.14
+  ]
+ ],
+ "title1": "ES添削400回で",
+ "title2": "FランからSIer内定"
+}

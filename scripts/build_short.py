@@ -32,8 +32,8 @@ fc.append(f"[cv]setpts=PTS/{SP},fps=30[sv]")
 fc.append(f"[ca]atempo={SP}[outa]")
 fc.append("color=black:s=1080x1920:r=30[bg]")
 fc.append("[bg][sv]overlay=0:600:shortest=1,"
-          f"drawtext=fontfile={font}:text='{c['title1']}':fontsize={s1}:fontcolor=white:borderw=6:bordercolor=black:x=(w-tw)/2:y=330,"
-          f"drawtext=fontfile={font}:text='{c['title2']}':fontsize={s2}:fontcolor=#FFE600:borderw=6:bordercolor=black:x=(w-tw)/2:y=445[outv]")
+          f"drawtext=fontfile={font}:text='{c['title1']}':expansion=none:fontsize={s1}:fontcolor=white:borderw=6:bordercolor=black:x=(w-tw)/2:y=330,"
+          f"drawtext=fontfile={font}:text='{c['title2']}':expansion=none:fontsize={s2}:fontcolor=#FFE600:borderw=6:bordercolor=black:x=(w-tw)/2:y=445[outv]")
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", c["src"], "-filter_complex", ";".join(fc),
                 "-map", "[outv]", "-map", "[outa]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
                 "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", c["out"]], check=True)

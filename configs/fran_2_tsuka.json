@@ -1,0 +1,29 @@
+{
+ "src": "/tmp/claude-0/-home-user-youtube-cutout/78609004-fc97-5442-adf7-f4fb14bbd8b8/scratchpad/src4/src.mp4",
+ "out": "output/Fラン_2_ES通過率2割から7割でFランから大手内定.mp4",
+ "crop": null,
+ "segments": [
+  [
+   814.4,
+   817.65
+  ],
+  [
+   750.37,
+   754.82
+  ],
+  [
+   759.55,
+   778.41
+  ],
+  [
+   804.49,
+   814.34
+  ],
+  [
+   817.71,
+   823.92
+  ]
+ ],
+ "title1": "ES通過率2割→7割",
+ "title2": "Fランから大手内定"
+}
