@@ -91,14 +91,14 @@
 
 動画ができたら、zipで送るのに加えて、次の作業まで行う。
 
-・アップ先フォルダ：Googleドライブのフォルダ（ID：122gag6NHWefhFt1PbiTUP7lkGdSm0mFL）。これまでのショート（1_大手ESだけ落ちる理由.mp4 など）が入っているフォルダ
+・アップ先フォルダ：https://drive.google.com/drive/u/1/folders/122gag6NHWefhFt1PbiTUP7lkGdSm0mFL（ID：122gag6NHWefhFt1PbiTUP7lkGdSm0mFL、ユーザー確認済み）
 ・アップした動画は、共有設定を「リンクを知っている全員（閲覧者）」にする（自動投稿ツールが読み込むため）
 ・転記先：スプレッドシート「自動化ツール_YouTube」（ID：17tXS4urLQe8px-fjYsEoPwB2OEDWzzshY8PEdiORKGM）のシート「data格納」
 ・列の構成：A=No／B=キャプション／C=投稿完了日／D=Google Drive動画URL／E=ステータス／F=エラー内容／G=投稿ID
 ・新しい行は表のいちばん下に追加し、B（キャプション＝ファイル名から .mp4 を除いたもの）と D（URL）だけを書く。A・C・E・F・Gは空欄のまま（自動投稿ツールが投稿後に埋める）
 ・URLの形式：https://drive.google.com/file/d/（ファイルID）/view?usp=sharing
 ・既存の行は書き換えない
-・参考：シート「情報」に、認証ユーザーと別の格納場所（フォルダID：17UYtDxmUI1SpPiWJmcdM_cQOEsnnlKFb）のメモがある
+・シート「情報」にある別の格納場所（フォルダID：17UYtDxmUI1SpPiWJmcdM_cQOEsnnlKFb）には入れない
 
 ### 制作例（大手ES回・改善版）
 ・タイトル：ベンチャーは通るのに／大手ESだけ落ちる
