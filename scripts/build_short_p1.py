@@ -49,22 +49,25 @@ tmp = tempfile.NamedTemporaryFile("w", suffix=".ass", delete=False, encoding="ut
 
 crop = c.get("crop")
 vf0 = (f"crop={crop[0]}:{crop[1]}:{crop[2]}:{crop[3]}," if crop else "") + f"scale=1080:{VH},setsar=1"
+ins = []
+for s_, e_ in segs:
+    ins += ["-ss", f"{s_:.3f}", "-t", f"{e_ - s_ + 0.5:.3f}", "-i", c["src"]]
 fc = []
 for i, (s, e) in enumerate(segs):
     d = e - s
-    fc.append(f"[0:v]trim={s}:{e},setpts=PTS-STARTPTS,{vf0}[v{i}]")
-    fc.append(f"[0:a]atrim={s}:{e},asetpts=PTS-STARTPTS,afade=t=in:d={F},afade=t=out:st={d-F:.3f}:d={F}[a{i}]")
+    fc.append(f"[{i}:v]trim=0:{d:.3f},setpts=PTS-STARTPTS,{vf0}[v{i}]")
+    fc.append(f"[{i}:a]atrim=0:{d:.3f},asetpts=PTS-STARTPTS,afade=t=in:d={F},afade=t=out:st={d-F:.3f}:d={F}[a{i}]")
 n = len(segs)
 fc.append("".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[cv][ca]")
 fc.append(f"[cv]setpts=PTS/{SP},fps=30[sv]")
 fc.append(f"[ca]atempo={SP}[outa]")
-fc.append(f"[1:v]scale={ICON_D}:{ICON_D}[ic]")
+fc.append(f"[{len(segs)}:v]scale={ICON_D}:{ICON_D}[ic]")
 fc.append("color=black:s=1080x1920:r=30[bg]")
 fc.append(f"[bg][sv]overlay=0:{VY}:shortest=1[b1];[b1][ic]overlay=(W-w)/2:{ICON_Y}[b2];"
           f"[b2]drawtext=fontfile={font}:text='{c['title1']}':expansion=none:fontsize={s1}:fontcolor=#FFE600:borderw=6:bordercolor=black:x=(w-tw)/2:y=330,"
           f"drawtext=fontfile={font}:text='{c['title2']}':expansion=none:fontsize={s2}:fontcolor=#FFE600:borderw=6:bordercolor=black:x=(w-tw)/2:y=445,"
           f"subtitles={tmp.name}[outv]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", c["src"], "-i", c.get("icon", "assets/inkya_icon.png"),
+subprocess.run(["ffmpeg", "-v", "error", "-y"] + ins + [ "-i", c.get("icon", "assets/inkya_icon.png"),
                 "-filter_complex", ";".join(fc), "-map", "[outv]", "-map", "[outa]", "-c:v", "libx264", "-preset", "medium",
                 "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", c["out"]], check=True)
 os.unlink(tmp.name)

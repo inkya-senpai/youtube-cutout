@@ -1,0 +1,25 @@
+{
+ "src": "/tmp/claude-0/-home-user-youtube-cutout/78609004-fc97-5442-adf7-f4fb14bbd8b8/scratchpad/src5/src.mp4",
+ "out": "output/面接通過率100%！日東駒専から大手IT3社内定した就活生の1社10時間の面接対策.mp4",
+ "crop": null,
+ "segments": [
+  [
+   534.67,
+   538.15
+  ],
+  [
+   54.69,
+   64.74
+  ],
+  [
+   528.6,
+   534.61
+  ],
+  [
+   538.21,
+   561.87
+  ]
+ ],
+ "title1": "面接通過率100%",
+ "title2": "1社10時間の対策法"
+}

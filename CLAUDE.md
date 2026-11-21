@@ -98,6 +98,10 @@
 ・新しい行は表のいちばん下に追加し、B（キャプション＝ファイル名から .mp4 を除いたもの）と D（URL）だけを書く。A・C・E・F・Gは空欄のまま（自動投稿ツールが投稿後に埋める）
 ・URLの形式：https://drive.google.com/file/d/（ファイルID）/view?usp=sharing
 ・既存の行は書き換えない
+・アップは Google Drive 連携の create_file（base64Content にファイル参照 sha256:<ハッシュ>:<絶対パス>、contentMimeType=video/mp4、disableConversionToGoogleType=true、parentId=上のフォルダ）で行う
+・1回のアップで送れるのは約3.1MBまで。超える動画はアップできないので、ユーザーに相談する
+・このフォルダに入れた動画は、フォルダの設定で自動的に「リンクを知っている全員」が見られる状態になる（個別の共有設定は不要）
+・転記は Google Sheets 連携の append_values（範囲 data格納!A1:G1、値は ["", キャプション, "", URL]）で行い、転記後に get_values で確認する
 ・シート「情報」にある別の格納場所（フォルダID：17UYtDxmUI1SpPiWJmcdM_cQOEsnnlKFb）には入れない
 
 ### 制作例（大手ES回・改善版）
